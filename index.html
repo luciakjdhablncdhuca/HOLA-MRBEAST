@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href ="style.css" rel = "stylesheet" type = "text/css" />
+    <title>HOLA MRBEAST</title>
+</head>
+<header>
+</header>
+<body>
+    <h1>HOLA MR BEAST</h1>
+    <div id="countdown"></div>
+</body>
+<script>
+    // Función para calcular y mostrar el tiempo restante
+    function countdown() {
+      // Comprueba si ya hay una fecha objetivo almacenada en localStorage
+      var targetDate = localStorage.getItem("targetDate");
+      
+      if (!targetDate) {
+        // Si no hay ninguna fecha objetivo almacenada, establece una nueva fecha objetivo (10 días a partir de hoy a las 22:00)
+        var today = new Date();
+        var tenDaysLater = new Date(today.getTime() + 10 * 24 * 60 * 60 * 1000);
+        tenDaysLater.setHours(22, 0, 0, 0); // Establece la hora objetivo a las 22:00
+        targetDate = tenDaysLater.getTime();
+        localStorage.setItem("targetDate", targetDate);
+      }
+    
+      // Actualiza el contador cada segundo
+      var countdownInterval = setInterval(function() {
+        var now = new Date().getTime();
+        var distance = targetDate - now;
+    
+        // Calcula los días, horas, minutos y segundos restantes
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+        // Muestra el tiempo restante en el elemento con id "countdown"
+        document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+    
+        // Si la cuenta regresiva ha terminado, detén el intervalo
+        if (distance < 0) {
+          clearInterval(countdownInterval);
+          document.getElementById("countdown").innerHTML = "¡El tiempo ha terminado!";
+        }
+      }, 1000); // Actualiza cada segundo
+    }
+    
+    // Inicia la cuenta regresiva cuando se carga la página
+    countdown();
+    </script>
+</html>

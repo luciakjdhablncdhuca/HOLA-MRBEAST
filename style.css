@@ -1,0 +1,97 @@
+@font-face {
+    font-family: 'Buchery';
+    src: url('BucheryRegular.eot');
+    src: local('Buchery'), local('BucheryRegular'),
+        url('BucheryRegular.eot?#iefix') format('embedded-opentype'),
+        url('BucheryRegular.woff2') format('woff2'),
+        url('BucheryRegular.woff') format('woff'),
+        url('BucheryRegular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color: black;
+    color: black;
+    margin: 0; /* Elimina los márgenes predeterminados */
+    padding: 0; /* Elimina el relleno predeterminado */
+}
+
+header {
+    padding: 10px 0; /* Aumenta el padding vertical */
+    height: 60px; /* Ajusta la altura del header */
+}
+
+nav {
+    background-image: linear-gradient(to right, #ff0080,  #357cff);
+    text-align: center;
+    padding: 0 20px; /* Aumenta el padding lateral */
+    line-height: 40px; /* Ajusta la altura de línea para centrar verticalmente los enlaces */
+    position: fixed; /* Fija el elemento en la ventana del navegador */
+    width: 100%; /* Ocupa todo el ancho disponible */
+    top: 0; /* Coloca el nav en la parte superior */
+    left: 0; /* Coloca el nav en el borde izquierdo */
+    z-index: 1000; /* Ajusta la capa z para que esté por encima de otros elementos */
+}
+
+nav a {
+    color: #000000;
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 18px;
+    transition: color 1s;
+    position: relative; /* Asegura que la línea se posicione correctamente */
+}
+
+nav a::after {
+    content: ''; /* Agrega un pseudo-elemento para la línea */
+    position: absolute; /* Lo posiciona de manera absoluta con respecto al enlace */
+    bottom: -2px; /* Ubica la línea justo debajo del texto */
+    left: 0%; /* Alinea la línea al centro del texto */
+    width: 0; /* Establece el ancho inicial de la línea */
+    height: 2px; /* Establece el grosor de la línea */
+    background-color: #000000; /* Color de la línea */
+    transition: width 0.5s ease-out; /* Agrega una transición para la animación */
+}
+
+nav a:hover::after {
+    width: 100%; /* Hace que la línea se expanda al 100% del ancho del enlace al pasar el cursor sobre él */
+}
+
+nav a:hover {
+    text-decoration: none;
+    color: #000000;
+}
+
+
+
+h1 {
+    font-family: 'Buchery', sans-serif;
+    color: transparent;
+    background-image: linear-gradient(to right, #357cff, #ff0080);
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-align: center;
+    font-size: 10vw;
+    margin-top: 110px; /* Ajusta el margen superior del texto para que no quede detrás del nav */
+}
+
+#countdown {
+    font-family: 'Buchery', sans-serif;
+    font-size:  10vw;
+    font-weight: bold;
+    text-align: center; 
+    margin-top: 50px;
+    background-image: linear-gradient(to right, #357cff, #ff0080); /* Establecemos el gradiente lineal como fondo */
+    -webkit-background-clip: text; /* Propiedad específica de Webkit para que el fondo se muestre a través del texto */
+    color: transparent; /* Hacemos el texto transparente */
+    background-clip: text; /* Propiedad de CSS3 para que el fondo se muestre a través del texto */
+}
+
+/* Respaldo para navegadores que no admiten background-clip en texto */
+@supports not (-webkit-background-clip: text) {
+    #countdown {
+        color: #357cff; /* Color sólido como respaldo */
+    }
+}
+
